@@ -4,5 +4,7 @@ MetaExif Tool: Extract camera settings, GPS data, and image metadata from JPEG p
 # ScreenShot
 <img src="screen.png" alt="">
 
-# Download Language Byte 👇
-<a href="https://github.com/hellobytecodes/Language-Byte">Download Byte</a>
+# Download Byte
+<a href="https://github.com/hellobytecodes/Language-Byte">Download Language Byte</a>
+
+Before you know how to run the tool, please install it by clicking the link above and downloading the Byte language source.
