@@ -1,0 +1,71 @@
+#include("metaexif")
+#include("color")
+#include("osb")
+#include("time")
+
+echo("\n")
+time.sleep(1)
+
+osb.run("clear")
+echo("\n")
+
+echo(color.cyan .. [[
+       ___------__
+ |\__-- /\       _-
+ |/    __      -
+ //\  /  \    /__
+ |  o|  0|__     --_
+ \\____-- __ \   ___-
+ (@@    __/  / /_
+    -_____---   --_
+     //  \ \\   ___-
+   //|\__/  \\  \
+   \_-\_____/  \-\
+        // \\--\|   -Han J. Lee-
+   ____//  ||_
+  /_____\ /___\
+______________________
+]] .. color.reset)
+
+local path_image = input(color.green .. "Enter Your Image Path" .. color.red .. ": " .. color.green)
+echo(color.reset)
+
+local data = metaexif.get(path_image)  -- اینجا data درسته، نه date
+
+if data then
+    echo(color.green .. "Camera: " .. color.yellow .. (data.make or "?") .. " " .. (data.model or "") .. "\n")
+    echo(color.green .. "App Edit: " .. color.yellow .. (data.software or "?") .. "\n")
+    echo(color.green .. "DateTime: " .. color.yellow .. (data.datetime or "?") .. "\n")
+    echo(color.green .. "DateTime Original: " .. color.yellow .. (data.datetime_original or "?") .. "\n")
+    echo(color.green .. "Numerical shutter speed: " .. color.yellow .. (data.exposure or "?") .. "\n")
+    echo(color.green .. "Readable shutter speed: " .. color.yellow .. (data.exposure_str or "?") .. "\n")
+    echo(color.green .. "Numerical aperture: " .. color.yellow .. (data.aperture or "?") .. "\n")
+    echo(color.green .. "Readable aperture: " .. color.yellow .. (data.aperture_str or "?") .. "\n")
+    echo(color.green .. "ISO number: " .. color.yellow .. (data.iso or "?") .. "\n")  -- iso درسته
+    echo(color.green .. "Current focal: " .. color.yellow .. (data.focal or "?") .. "\n")
+    echo(color.green .. "Readable focal: " .. color.yellow .. (data.focal_str or "?") .. "\n")
+    echo(color.green .. "35mm equivalent: " .. color.yellow .. (data.focal_35mm or "?") .. "\n")
+    echo(color.green .. "Flash: " .. color.yellow .. (data.flash_str or "?") .. "\n")
+    echo(color.green .. "Subject distance: " .. color.yellow .. (data.subject_distance or "?") .. "\n")
+    echo(color.green .. "Exposure compensation: " .. color.yellow .. (data.exposure_bias or "?") .. "\n")
+    echo(color.green .. "Image width: " .. color.yellow .. (data.width or "?") .. "\n")
+    echo(color.green .. "Image height: " .. color.yellow .. (data.height or "?") .. "\n")
+    echo(color.green .. "Bits per pixel: " .. color.yellow .. (data.bits or "?") .. "\n")
+    echo(color.green .. "Description: " .. color.yellow .. (data.description or "?") .. "\n")
+    echo(color.green .. "Copyright: " .. color.yellow .. (data.copyright or "?") .. "\n")
+    
+    if data.gps then
+        echo(color.green .. "Latitude: " .. color.yellow .. (data.gps.lat or "?") .. "\n")
+        echo(color.green .. "Longitude: " .. color.yellow .. (data.gps.lon or "?") .. "\n")
+        echo(color.green .. "Altitude: " .. color.yellow .. (data.gps.alt or "?") .. "\n")
+        echo(color.green .. "DMS format: " .. color.yellow .. (data.gps.dms or "?") .. "\n")
+        echo(color.green .. "Google Maps: " .. color.yellow .. (data.gps.google_maps or "?") .. "\n")
+    end
+    
+    echo(color.green .. "\n✅ Done!" .. color.reset)
+else
+    echo(color.red .. "\n❌ No EXIF data found in this image!" .. color.reset)
+end
+
+echo(color.dim .. "\nPress Enter to exit..." .. color.reset)
+input("")
