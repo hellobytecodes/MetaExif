@@ -12,7 +12,7 @@ git clone https://github.com/hellobytecodes/MetaExif
 cd MetaExif
 ```
 ``` bash
-./byte metaexif.by
+./byte MetaExif.by
 ```
 
 # Download Byte
