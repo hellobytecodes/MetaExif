@@ -4,6 +4,17 @@ MetaExif Tool: Extract camera settings, GPS data, and image metadata from JPEG p
 # ScreenShot
 <img src="screen.png" alt="">
 
+# install Termux / Kali-Linux
+``` bash
+git clone https://github.com/hellobytecodes/MetaExif
+```
+``` bash
+cd MetaExif
+```
+``` bash
+./byte metaexif.by
+```
+
 # Download Byte
 <a href="https://github.com/hellobytecodes/Language_Byte">Download Language Byte</a>
 
